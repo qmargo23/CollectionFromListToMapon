@@ -25,8 +25,11 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public String add(@RequestParam String firstName,
-                        @RequestParam String lastName) {
-        return employeeService.add(firstName, lastName);
+                      @RequestParam String lastName,
+                      @RequestParam String department,
+                      @RequestParam String salary
+    ) {
+        return employeeService.add(firstName, lastName, department, salary);
     }
 
     @GetMapping("/get")
@@ -36,13 +39,19 @@ public class EmployeeController {
 
     @GetMapping("/find")
     public String find(@RequestParam String firstName,
-                         @RequestParam String lastName) {
-        return employeeService.find(firstName, lastName);
+                       @RequestParam String lastName,
+                       @RequestParam String department,
+                       @RequestParam String salary
+    ) {
+        return employeeService.find(firstName, lastName, department, salary);
     }
 
     @GetMapping("/remove")
     public String remove(@RequestParam String firstName,
-                         @RequestParam String lastName) {
-        return employeeService.remove(firstName, lastName);
+                         @RequestParam String lastName,
+                         @RequestParam String department,
+                         @RequestParam String salary
+    ) {
+        return employeeService.remove(firstName, lastName, department, salary);
     }
 }

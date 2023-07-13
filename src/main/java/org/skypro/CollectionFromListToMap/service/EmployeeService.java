@@ -7,27 +7,22 @@ import org.skypro.CollectionFromListToMap.exception.EmployeeStorageIsFullExcepti
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class EmployeeService {
 
     private final List<Employee> employees = new ArrayList<>();
-    private final Map<String, Employee> employeeMap = new HashMap<>();
 
     private final static int MAX_SIZE = 4;
 
-    public String add(String firstName, String lastName) {
+    public String add(String firstName, String lastName, String department,String salary) {
         if (employees.size() >= MAX_SIZE) {
             throw new EmployeeStorageIsFullException("переполнение массива сотрудников");
         }
-        String key = firstName + lastName;
 
-        Employee newEmployee = new Employee(firstName, lastName);
+        Employee newEmployee = new Employee(firstName, lastName, department, salary);
 
-        employeeMap.put(key, newEmployee);
 
         if (employees.contains(newEmployee)) {
             throw new EmployeeAlreadyAddedException("такой сотрудник уже есть");
@@ -36,8 +31,8 @@ public class EmployeeService {
         return newEmployee + "___ДОБАВЛЕН";
     }
 
-    public String find(String firstName, String lastName) {
-        Employee forFind = new Employee(firstName, lastName);
+    public String find(String firstName, String lastName, String department, String salary) {
+        Employee forFind = new Employee(firstName, lastName, department, salary);
         for (Employee employee : employees) {
             if (employee.equals(forFind)) {
                 return forFind + "___НАЙДЕН";
@@ -46,8 +41,8 @@ public class EmployeeService {
         throw new EmployeeNotFoundException("сотрудник не найден");
     }
 
-    public String remove(String firstName, String lastName) {
-        Employee forRemove = new Employee(firstName, lastName);
+    public String remove(String firstName, String lastName, String department,String salary) {
+        Employee forRemove = new Employee(firstName, lastName, department, salary);
         boolean removeResult = employees.remove(forRemove);
         if (removeResult) {
             return forRemove + "___УДАЛЕН";
