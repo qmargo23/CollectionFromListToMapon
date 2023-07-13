@@ -4,34 +4,32 @@ import java.util.Objects;
 
 public class Employee {
 
-    public final String firstName;
-    public final String lastName;
-    private final String department;
-    private final String salary;
+    private final String firstName;
+    private final String lastName;
+    private String department;
+    private String salary;
 
-    public Employee(String firstName, String lastName, String department, String salary) {
-        this.firstName = firstName;
+
+    public Employee(String lastName, String firstName, String department, String salary) {
         this.lastName = lastName;
+        this.firstName = firstName;
         this.department = department;
         this.salary = salary;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public Employee( String lastName, String firstName) {
+        this.lastName = lastName;
+        this.firstName = firstName;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-//                ", department=" + department +
-//                ", salary=" + salary +
-                '}';
+        return "\t&#128073;" +
+                " lastName: '" + lastName + '\'' +
+                ", firstName: '" + firstName + '\'' +
+                ", department: " + department +
+                ", salary = " + salary +
+                " \t&#128072; ";
     }
 
     @Override
@@ -44,6 +42,6 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(lastName,firstName );
     }
 }

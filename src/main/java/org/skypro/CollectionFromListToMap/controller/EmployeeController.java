@@ -1,11 +1,8 @@
 package org.skypro.CollectionFromListToMap.controller;
 
-import org.skypro.CollectionFromListToMap.entity.Employee;
 import org.skypro.CollectionFromListToMap.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
@@ -24,34 +21,31 @@ public class EmployeeController {
     }
 
     @GetMapping("/add")
-    public String add(@RequestParam String firstName,
-                      @RequestParam String lastName,
+    public String add(@RequestParam String lastName,
+                      @RequestParam String firstName,
                       @RequestParam String department,
                       @RequestParam String salary
     ) {
-        return employeeService.add(firstName, lastName, department, salary);
+        return employeeService.add(lastName, firstName, department, salary);
     }
 
     @GetMapping("/get")
-    public List<Employee> getAll() {
+    public String getAll() {
         return employeeService.getAll();
     }
 
     @GetMapping("/find")
-    public String find(@RequestParam String firstName,
-                       @RequestParam String lastName,
-                       @RequestParam String department,
-                       @RequestParam String salary
+    public String find(@RequestParam String lastName,
+                       @RequestParam String firstName
+
     ) {
-        return employeeService.find(firstName, lastName, department, salary);
+        return employeeService.find(lastName, firstName);
     }
 
     @GetMapping("/remove")
-    public String remove(@RequestParam String firstName,
-                         @RequestParam String lastName,
-                         @RequestParam String department,
-                         @RequestParam String salary
+    public String remove(@RequestParam String lastName,
+                         @RequestParam String firstName
     ) {
-        return employeeService.remove(firstName, lastName, department, salary);
+        return employeeService.remove(lastName, firstName);
     }
 }
