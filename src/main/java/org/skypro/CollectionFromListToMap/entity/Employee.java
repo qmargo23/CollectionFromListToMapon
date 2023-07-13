@@ -29,7 +29,7 @@ public class Employee {
                 ", firstName: '" + firstName + '\'' +
                 ", department: " + department +
                 ", salary = " + salary +
-                " \t&#128072; ";
+                " \t&#127937;; ";
     }
 
     @Override

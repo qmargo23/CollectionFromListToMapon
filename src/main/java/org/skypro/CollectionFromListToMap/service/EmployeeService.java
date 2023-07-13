@@ -19,7 +19,6 @@ public class EmployeeService {
             "ВавиловОлег",
             new Employee("Вавилов", "Олег", "1", "80_000.500")));
 
-
     private final static int MAX_SIZE = 3;//максимальное кол сотрудников
 
     public String add(String lastName, String firstName, String department, String salary) {
